@@ -1,6 +1,6 @@
 ﻿namespace Simplification_of_the_karnaugh_map
 {
-    partial class Form1
+    partial class View
     {
         /// <summary>
         /// 必要なデザイナー変数です。

@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace Simplification_of_the_karnaugh_map
 {
-    public partial class Form1 : Form
+    //表示用のビューです．
+    public partial class View : Form
     {
-        public Form1()
+        public View()
         {
             InitializeComponent();
         }
