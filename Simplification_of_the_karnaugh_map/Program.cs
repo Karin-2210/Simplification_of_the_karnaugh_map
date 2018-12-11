@@ -9,7 +9,7 @@ namespace Simplification_of_the_karnaugh_map
     static class Program
     {
         /// <summary>
-        /// アプリケーションのメイン エントリ ポイントです。プログラムの中核となります．
+        /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>
         [STAThread]
         static void Main()
