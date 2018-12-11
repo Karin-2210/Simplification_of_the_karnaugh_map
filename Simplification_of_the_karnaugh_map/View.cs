@@ -17,5 +17,7 @@ namespace Simplification_of_the_karnaugh_map
         {
             InitializeComponent();
         }
+
+       
     }
 }
