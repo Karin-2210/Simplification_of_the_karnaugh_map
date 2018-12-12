@@ -36,12 +36,12 @@ namespace Simplification_of_the_karnaugh_map
         {
             // 真理値表の描画
             Console.WriteLine("\t\t00\t01\t11\t10");
-            for (int i = 0; i < this.truth_table_array.GetLength(0); i++)
+            for (int i = 0; i < truth_table_array.GetLength(0); i++)
             {
                 Console.Write("\t" + grayCode[i]);
-                for (int j = 0; j < this.truth_table_array.GetLength(1); j++)
+                for (int j = 0; j < truth_table_array.GetLength(1); j++)
                 {
-                    Console.Write("\t" + this.truth_table_array[i,j]);
+                    Console.Write("\t" + truth_table_array[i,j]);
                 }
                 Console.WriteLine();
             }
@@ -70,12 +70,12 @@ namespace Simplification_of_the_karnaugh_map
         // 手入力で真理値表を作るときに使う
         public void inputtruth_table_array()
         {
-            for (int i = 0; i < this.truth_table_array.GetLength(0); i++)
+            for (int i = 0; i < truth_table_array.GetLength(0); i++)
             {
-                for (int j = 0; j < this.truth_table_array.GetLength(1); j++)
+                for (int j = 0; j < truth_table_array.GetLength(1); j++)
                 {
                     int t = int.Parse(Console.ReadLine());
-                    this.truth_table_array[i, j] = t;
+                    truth_table_array[i, j] = t;
                     if (t == 1) this.shouldGrouped[i, j] = true;
                     else this.shouldGrouped[i, j] = false;
                 }
@@ -109,7 +109,7 @@ namespace Simplification_of_the_karnaugh_map
                                 for (diff_y = 0; diff_y < size_y; diff_y++)
                                 {
                                     // もし一つでも0ならグループ化できないからフラグを下ろしておく
-                                    if (this.truth_table_array[(start_x + diff_x) % VAR_NUM, (start_y + diff_y) % VAR_NUM] == 0)
+                                    if (truth_table_array[(start_x + diff_x) % VAR_NUM, (start_y + diff_y) % VAR_NUM] == 0)
                                     {
                                         isTrue = false;
                                     }
