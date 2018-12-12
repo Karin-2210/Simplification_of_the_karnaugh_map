@@ -15,7 +15,7 @@ namespace Simplification_of_the_karnaugh_map
         private const int VAR_NUM = 4;
 
         // 真理値表
-        static int[,] truth_table_array = new int[4, 4];
+        static int[,] truth_table_array = new int[VAR_NUM, VAR_NUM];
 
         public void calc()
         {
@@ -109,7 +109,7 @@ namespace Simplification_of_the_karnaugh_map
                                 for (diff_y = 0; diff_y < size_y; diff_y++)
                                 {
                                     // もし一つでも0ならグループ化できないからフラグを下ろしておく
-                                    if (this.logicalVariable[(start_x + diff_x) % VAR_NUM, (start_y + diff_y) % VAR_NUM] == 0)
+                                    if (this.truth_table_array[(start_x + diff_x) % VAR_NUM, (start_y + diff_y) % VAR_NUM] == 0)
                                     {
                                         isTrue = false;
                                     }
