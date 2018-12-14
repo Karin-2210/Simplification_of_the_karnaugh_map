@@ -95,6 +95,16 @@ namespace Simplification_of_the_karnaugh_map
             int diff_x = 0, diff_y = 0;                 // マスを評価するときのイテレータ
                                                         // 真理値表を全体の変数から持ってくる
             this.truth_table_array = _ViewInstance.truth_table_array;
+
+            for (int i = 0; i < VAR_NUM; i++)
+            {
+                for (int j = 0; j < VAR_NUM; j++)
+                {
+                    if (truth_table_array[i, j] == 1) this.shouldGrouped[i, j] = true;
+                    else this.shouldGrouped[i, j] = false;
+                }
+            }
+
             // (4*4 -> 4*2 -> 4*1 -> 2*4 -> 2*1 -> 1*4 -> 1*2 -> 1*1)の順に探していくよ
             for (size_x = VAR_NUM; size_x > 0; size_x /= 2)
             {
