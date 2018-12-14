@@ -98,6 +98,7 @@
             this.Run_Button.TabIndex = 6;
             this.Run_Button.Text = "Run";
             this.Run_Button.UseVisualStyleBackColor = true;
+            this.Run_Button.Click += new System.EventHandler(this.Run_Button_Click);
             // 
             // View
             // 
@@ -121,7 +122,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox Formula;
+        public System.Windows.Forms.TextBox Formula;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
