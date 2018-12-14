@@ -15,14 +15,11 @@ namespace Simplification_of_the_karnaugh_map
         private const int VAR_NUM = 4;
 
         // 真理値表
-        static int[,] truth_table_array = new int[VAR_NUM, VAR_NUM];
-
-        // 真理値表を全体の変数から持ってくる
-        this.truth_tablearray = _ViewInstance.truth_table_array;
+        int[,] truth_table_array = new int[VAR_NUM, VAR_NUM];
 
         public void calc()
         {
-            _ViewInstance = View.ViewInstance;
+            
         }
 
         // そのマスをグループ化するべきかどうか
@@ -89,13 +86,15 @@ namespace Simplification_of_the_karnaugh_map
         // とりあえず貪欲的に
         public void mainAlgorithm()
         {
+            _ViewInstance = View.ViewInstance;
             this.groupOfVariable = new List<int[]>();   // グループ化された値を初期化
             bool isTrue = true;                         // そのマスは1かどうか
             bool whetherGrouped = false;                // すでにグループ化されてるマスだけでまとめるのは意味ないよね
             int size_x = 0, size_y = 0;                 // グループ化するときの大きさ
             int start_x = 0, start_y = 0;               // 探索のスタート位置(左上が基準)
             int diff_x = 0, diff_y = 0;                 // マスを評価するときのイテレータ
-
+                                                        // 真理値表を全体の変数から持ってくる
+            this.truth_table_array = _ViewInstance.truth_table_array;
             // (4*4 -> 4*2 -> 4*1 -> 2*4 -> 2*1 -> 1*4 -> 1*2 -> 1*1)の順に探していくよ
             for (size_x = VAR_NUM; size_x > 0; size_x /= 2)
             {
