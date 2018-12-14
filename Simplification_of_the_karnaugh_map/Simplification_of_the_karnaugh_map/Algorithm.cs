@@ -17,6 +17,9 @@ namespace Simplification_of_the_karnaugh_map
         // 真理値表
         static int[,] truth_table_array = new int[VAR_NUM, VAR_NUM];
 
+        // 真理値表を全体の変数から持ってくる
+        this.truth_tablearray = _ViewInstance.truth_table_array;
+
         public void calc()
         {
             _ViewInstance = View.ViewInstance;
