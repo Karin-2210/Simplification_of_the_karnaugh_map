@@ -35,6 +35,22 @@
             this.label4 = new System.Windows.Forms.Label();
             this.Simplification_Formula = new System.Windows.Forms.TextBox();
             this.Run_Button = new System.Windows.Forms.Button();
+            this.truth_table_output_00 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_01 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_02 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_03 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_13 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_12 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_11 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_10 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_23 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_22 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_21 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_20 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_33 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_32 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_31 = new System.Windows.Forms.TextBox();
+            this.truth_table_output_30 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -100,11 +116,155 @@
             this.Run_Button.UseVisualStyleBackColor = true;
             this.Run_Button.Click += new System.EventHandler(this.Run_Button_Click);
             // 
+            // truth_table_output_00
+            // 
+            this.truth_table_output_00.Location = new System.Drawing.Point(345, 333);
+            this.truth_table_output_00.Name = "truth_table_output_00";
+            this.truth_table_output_00.ReadOnly = true;
+            this.truth_table_output_00.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_00.TabIndex = 7;
+            // 
+            // truth_table_output_01
+            // 
+            this.truth_table_output_01.Location = new System.Drawing.Point(400, 333);
+            this.truth_table_output_01.Name = "truth_table_output_01";
+            this.truth_table_output_01.ReadOnly = true;
+            this.truth_table_output_01.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_01.TabIndex = 8;
+            // 
+            // truth_table_output_02
+            // 
+            this.truth_table_output_02.Location = new System.Drawing.Point(460, 333);
+            this.truth_table_output_02.Name = "truth_table_output_02";
+            this.truth_table_output_02.ReadOnly = true;
+            this.truth_table_output_02.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_02.TabIndex = 9;
+            // 
+            // truth_table_output_03
+            // 
+            this.truth_table_output_03.Location = new System.Drawing.Point(518, 333);
+            this.truth_table_output_03.Name = "truth_table_output_03";
+            this.truth_table_output_03.ReadOnly = true;
+            this.truth_table_output_03.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_03.TabIndex = 10;
+            // 
+            // truth_table_output_13
+            // 
+            this.truth_table_output_13.Location = new System.Drawing.Point(518, 380);
+            this.truth_table_output_13.Name = "truth_table_output_13";
+            this.truth_table_output_13.ReadOnly = true;
+            this.truth_table_output_13.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_13.TabIndex = 14;
+            // 
+            // truth_table_output_12
+            // 
+            this.truth_table_output_12.Location = new System.Drawing.Point(460, 380);
+            this.truth_table_output_12.Name = "truth_table_output_12";
+            this.truth_table_output_12.ReadOnly = true;
+            this.truth_table_output_12.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_12.TabIndex = 13;
+            // 
+            // truth_table_output_11
+            // 
+            this.truth_table_output_11.Location = new System.Drawing.Point(400, 380);
+            this.truth_table_output_11.Name = "truth_table_output_11";
+            this.truth_table_output_11.ReadOnly = true;
+            this.truth_table_output_11.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_11.TabIndex = 12;
+            // 
+            // truth_table_output_10
+            // 
+            this.truth_table_output_10.Location = new System.Drawing.Point(345, 380);
+            this.truth_table_output_10.Name = "truth_table_output_10";
+            this.truth_table_output_10.ReadOnly = true;
+            this.truth_table_output_10.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_10.TabIndex = 11;
+            // 
+            // truth_table_output_23
+            // 
+            this.truth_table_output_23.Location = new System.Drawing.Point(518, 429);
+            this.truth_table_output_23.Name = "truth_table_output_23";
+            this.truth_table_output_23.ReadOnly = true;
+            this.truth_table_output_23.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_23.TabIndex = 18;
+            // 
+            // truth_table_output_22
+            // 
+            this.truth_table_output_22.Location = new System.Drawing.Point(460, 429);
+            this.truth_table_output_22.Name = "truth_table_output_22";
+            this.truth_table_output_22.ReadOnly = true;
+            this.truth_table_output_22.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_22.TabIndex = 17;
+            // 
+            // truth_table_output_21
+            // 
+            this.truth_table_output_21.Location = new System.Drawing.Point(400, 429);
+            this.truth_table_output_21.Name = "truth_table_output_21";
+            this.truth_table_output_21.ReadOnly = true;
+            this.truth_table_output_21.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_21.TabIndex = 16;
+            // 
+            // truth_table_output_20
+            // 
+            this.truth_table_output_20.Location = new System.Drawing.Point(345, 429);
+            this.truth_table_output_20.Name = "truth_table_output_20";
+            this.truth_table_output_20.ReadOnly = true;
+            this.truth_table_output_20.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_20.TabIndex = 15;
+            // 
+            // truth_table_output_33
+            // 
+            this.truth_table_output_33.Location = new System.Drawing.Point(518, 479);
+            this.truth_table_output_33.Name = "truth_table_output_33";
+            this.truth_table_output_33.ReadOnly = true;
+            this.truth_table_output_33.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_33.TabIndex = 22;
+            // 
+            // truth_table_output_32
+            // 
+            this.truth_table_output_32.Location = new System.Drawing.Point(460, 479);
+            this.truth_table_output_32.Name = "truth_table_output_32";
+            this.truth_table_output_32.ReadOnly = true;
+            this.truth_table_output_32.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_32.TabIndex = 21;
+            // 
+            // truth_table_output_31
+            // 
+            this.truth_table_output_31.Location = new System.Drawing.Point(400, 479);
+            this.truth_table_output_31.Name = "truth_table_output_31";
+            this.truth_table_output_31.ReadOnly = true;
+            this.truth_table_output_31.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_31.TabIndex = 20;
+            // 
+            // truth_table_output_30
+            // 
+            this.truth_table_output_30.Location = new System.Drawing.Point(345, 479);
+            this.truth_table_output_30.Name = "truth_table_output_30";
+            this.truth_table_output_30.ReadOnly = true;
+            this.truth_table_output_30.Size = new System.Drawing.Size(25, 25);
+            this.truth_table_output_30.TabIndex = 19;
+            // 
             // View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1328, 676);
+            this.ClientSize = new System.Drawing.Size(991, 676);
+            this.Controls.Add(this.truth_table_output_33);
+            this.Controls.Add(this.truth_table_output_32);
+            this.Controls.Add(this.truth_table_output_31);
+            this.Controls.Add(this.truth_table_output_30);
+            this.Controls.Add(this.truth_table_output_23);
+            this.Controls.Add(this.truth_table_output_22);
+            this.Controls.Add(this.truth_table_output_21);
+            this.Controls.Add(this.truth_table_output_20);
+            this.Controls.Add(this.truth_table_output_13);
+            this.Controls.Add(this.truth_table_output_12);
+            this.Controls.Add(this.truth_table_output_11);
+            this.Controls.Add(this.truth_table_output_10);
+            this.Controls.Add(this.truth_table_output_03);
+            this.Controls.Add(this.truth_table_output_02);
+            this.Controls.Add(this.truth_table_output_01);
+            this.Controls.Add(this.truth_table_output_00);
             this.Controls.Add(this.Run_Button);
             this.Controls.Add(this.Simplification_Formula);
             this.Controls.Add(this.label4);
@@ -128,6 +288,22 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox Simplification_Formula;
         private System.Windows.Forms.Button Run_Button;
+        private System.Windows.Forms.TextBox truth_table_output_00;
+        private System.Windows.Forms.TextBox truth_table_output_01;
+        private System.Windows.Forms.TextBox truth_table_output_02;
+        private System.Windows.Forms.TextBox truth_table_output_03;
+        private System.Windows.Forms.TextBox truth_table_output_13;
+        private System.Windows.Forms.TextBox truth_table_output_12;
+        private System.Windows.Forms.TextBox truth_table_output_11;
+        private System.Windows.Forms.TextBox truth_table_output_10;
+        private System.Windows.Forms.TextBox truth_table_output_23;
+        private System.Windows.Forms.TextBox truth_table_output_22;
+        private System.Windows.Forms.TextBox truth_table_output_21;
+        private System.Windows.Forms.TextBox truth_table_output_20;
+        private System.Windows.Forms.TextBox truth_table_output_33;
+        private System.Windows.Forms.TextBox truth_table_output_32;
+        private System.Windows.Forms.TextBox truth_table_output_31;
+        private System.Windows.Forms.TextBox truth_table_output_30;
     }
 }
 
