@@ -51,6 +51,8 @@
             this.truth_table_output_32 = new System.Windows.Forms.TextBox();
             this.truth_table_output_31 = new System.Windows.Forms.TextBox();
             this.truth_table_output_30 = new System.Windows.Forms.TextBox();
+            this.Simplified_Draw = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.Simplified_Draw)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -244,6 +246,14 @@
             this.truth_table_output_30.Size = new System.Drawing.Size(25, 25);
             this.truth_table_output_30.TabIndex = 19;
             // 
+            // Simplified_Draw
+            // 
+            this.Simplified_Draw.Location = new System.Drawing.Point(-5, 0);
+            this.Simplified_Draw.Name = "Simplified_Draw";
+            this.Simplified_Draw.Size = new System.Drawing.Size(996, 676);
+            this.Simplified_Draw.TabIndex = 23;
+            this.Simplified_Draw.TabStop = false;
+            // 
             // View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -272,8 +282,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Formula);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.Simplified_Draw);
             this.Name = "View";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.Simplified_Draw)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,6 +316,7 @@
         private System.Windows.Forms.TextBox truth_table_output_32;
         private System.Windows.Forms.TextBox truth_table_output_31;
         private System.Windows.Forms.TextBox truth_table_output_30;
+        private System.Windows.Forms.PictureBox Simplified_Draw;
     }
 }
 

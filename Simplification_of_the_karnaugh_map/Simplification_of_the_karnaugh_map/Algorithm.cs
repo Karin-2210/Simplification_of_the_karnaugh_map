@@ -26,7 +26,7 @@ namespace Simplification_of_the_karnaugh_map
         private bool[,] shouldGrouped = new bool[VAR_NUM, VAR_NUM];
 
         // 変数のグループを保存(グループの左上と右下だけでOK)
-        private List<int[]> groupOfVariable = new List<int[]>();
+        public List<int[]> groupOfVariable = new List<int[]>();
 
         // グレイ符号(主に描画するときにしか使わないだろうね)
         private String[] grayCode = { "00", "01", "11", "10" };
@@ -79,7 +79,7 @@ namespace Simplification_of_the_karnaugh_map
                     if (t == 1) this.shouldGrouped[i, j] = true;
                     else this.shouldGrouped[i, j] = false;
                 }
-            }
+            }//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         }
 
         // メインのアルゴリズム
