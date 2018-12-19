@@ -155,6 +155,7 @@ namespace Simplification_of_the_karnaugh_map
                                 {
                                     // グループ化のリストに左上のマスと右下のマスを保存
                                     this.groupOfVariable.Add(new int[4] { start_x, start_y, (start_x + diff_x - 1) % VAR_NUM, (start_y + diff_y - 1) % VAR_NUM });
+                                    Console.Out.WriteLine("(" + start_x + "," +  start_y + ") -> (" + (start_x + diff_x - 1) % VAR_NUM + "," + (start_y + diff_y - 1) % VAR_NUM + ")");
                                     for (int i = start_x; i < size_x + start_x; i++)
                                     {
                                         // グループ化されたマスたちはもうグループ化しなくてもいいからフラグを下ろしておく
