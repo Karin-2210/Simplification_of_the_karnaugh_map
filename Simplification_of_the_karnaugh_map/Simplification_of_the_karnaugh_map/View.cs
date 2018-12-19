@@ -78,15 +78,36 @@ namespace Simplification_of_the_karnaugh_map
             {
                 if (_Algorithm.groupOfVariable[i][0] != _Algorithm.groupOfVariable[i][2] && _Algorithm.groupOfVariable[i][1] != _Algorithm.groupOfVariable[i][3])
                 {
-                    graphics.DrawEllipse(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0],_Algorithm.groupOfVariable[i][1]].Location.X)+ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y)+ofset_Y, 76, 70);
+                    if (_Algorithm.groupOfVariable[i][2] - _Algorithm.groupOfVariable[i][0] == 1)
+                    {
+                        graphics.DrawEllipse(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, 76, 70);
+                    }
+                    else
+                    {
+                        graphics.DrawEllipse(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, 152, 140);
+                    }
                 }
                 else if (_Algorithm.groupOfVariable[i][0] == _Algorithm.groupOfVariable[i][2])
                 {
-                    graphics.DrawEllipse(pen,(truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X)+ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y)+ofset_Y, 76, 35);
+                    if (_Algorithm.groupOfVariable[i][3] - _Algorithm.groupOfVariable[i][1] == 1)
+                    {
+                        graphics.DrawEllipse(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, 76, 35);
+                    }
+                    else
+                    {
+                        graphics.DrawEllipse(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, 152, 35);
+                    }
+
                 }
                 else
                 {
-                    graphics.DrawEllipse(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X)+ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y)+ofset_Y, 38, 70);
+                    if (_Algorithm.groupOfVariable[i][2] - _Algorithm.groupOfVariable[i][0] == 1)
+                    {
+                        graphics.DrawEllipse(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, 38, 70);
+                    }
+                    else {
+                        graphics.DrawEllipse(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, 38, 140);
+                    }
                 }
             }
             graphics.Dispose();
