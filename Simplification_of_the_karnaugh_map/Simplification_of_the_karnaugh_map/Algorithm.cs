@@ -96,6 +96,9 @@ namespace Simplification_of_the_karnaugh_map
                                                         // 真理値表を全体の変数から持ってくる
             this.truth_table_array = _ViewInstance.truth_table_array;
 
+            bool[,] tmpShouldGrouped = new bool[VAR_NUM, VAR_NUM];  // 2回目の探索用
+            List<int[]> tmpGroupOfVariable = new List<int[]>();     // 2回目の探索用
+
             for (int i = 0; i < VAR_NUM; i++)
             {
                 for (int j = 0; j < VAR_NUM; j++)
@@ -105,14 +108,23 @@ namespace Simplification_of_the_karnaugh_map
                 }
             }
 
-            // (4*4 -> 4*2 -> 4*1 -> 2*4 -> 2*1 -> 1*4 -> 1*2 -> 1*1)の順に探していくよ
-            for (size_x = VAR_NUM; size_x > 0; size_x /= 2)
+            for (int i = 0; i < VAR_NUM; i++)
             {
-                for (size_y = VAR_NUM; size_y > 0; size_y /= 2)
+                for (int j = 0; j < VAR_NUM; j++)
                 {
-                    // 左上から右下へ
+                    tmpShouldGrouped[i, j] = shouldGrouped[i, j];
+                }
+            }
+
+            // (4*4 -> 4*2 -> 4*1 -> 2*4 -> 2*1 -> 1*4 -> 1*2 -> 1*1)の順に探していくよ
+            for (size_x = VAR_NUM; size_x > 0; size_x/=2)
+            {
+                for (size_y = VAR_NUM; size_y > 0; size_y/=2)
+                {
+                    // 左から右へ
                     for (start_x = 0; start_x < VAR_NUM; start_x++)
                     {
+                        // 上から下へ
                         for (start_y = 0; start_y < VAR_NUM; start_y++)
                         {
                             // サイズの分だけ探索
@@ -121,7 +133,7 @@ namespace Simplification_of_the_karnaugh_map
                                 for (diff_y = 0; diff_y < size_y; diff_y++)
                                 {
                                     // もし一つでも0ならグループ化できないからフラグを下ろしておく
-                                    if (truth_table_array[(start_x + diff_x) % VAR_NUM, (start_y + diff_y) % VAR_NUM] == 0)
+                                    if (this.truth_table_array[(start_x + diff_x)%VAR_NUM, (start_y + diff_y)%VAR_NUM] == 0)
                                     {
                                         isTrue = false;
                                     }
@@ -135,7 +147,7 @@ namespace Simplification_of_the_karnaugh_map
                                 {
                                     for (int j = start_y; j < size_y + start_y; j++)
                                     {
-                                        if (this.shouldGrouped[(i) % VAR_NUM, (j) % VAR_NUM]) whetherGrouped = true;
+                                        if (this.shouldGrouped[(i)%VAR_NUM, (j)%VAR_NUM]) whetherGrouped = true;
                                     }
                                 }
                                 // グループ化するべき組み合わせならば
@@ -161,6 +173,71 @@ namespace Simplification_of_the_karnaugh_map
                     }
                 }
             }
+            /*
+            // (4*4 -> 4*2 -> 4*1 -> 2*4 -> 2*1 -> 1*4 -> 1*2 -> 1*1)の順に探していくよ
+            // ただし，2回目だから探索の順序を変えてみる
+            for (size_y = VAR_NUM; size_y > 0; size_y /= 2)
+            {
+                for (size_x = VAR_NUM; size_x > 0; size_x /= 2)
+                {
+                    // 上から下へ
+                    for (start_y = 0; start_y < VAR_NUM; start_y++)
+                    {
+                        // 左から右へ
+                        for (start_x = 0; start_x < VAR_NUM; start_x++)
+                        {
+                            // サイズの分だけ探索
+                            for (diff_y = 0; diff_y < size_y; diff_y++)
+                            {
+                                for (diff_x = 0; diff_x < size_x; diff_x++)
+                                {
+                                    // もし一つでも0ならグループ化できないからフラグを下ろしておく
+                                    if (truth_table_array[(start_x + diff_x) % VAR_NUM, (start_y + diff_y) % VAR_NUM] == 0)
+                                    {
+                                        isTrue = false;
+                                    }
+                                }
+                            }
+                            // もし全部1でも他のグループでカバーできていればグループ化は不必要だから確認してみる
+                            // 逆に言うと，一つでもグループ化されていないマスがあれば，グループ化しちゃおう
+                            if (isTrue)
+                            {
+                                for (int j = start_y; j < size_y + start_y; j++)
+                                {
+                                    for (int i = start_x; i < size_x + start_x; i++)
+                                    {
+                                        if (tmpShouldGrouped[(i) % VAR_NUM, (j) % VAR_NUM]) whetherGrouped = true;
+                                    }
+                                }
+                                // グループ化するべき組み合わせならば
+                                if (whetherGrouped)
+                                {
+                                    // グループ化のリストに左上のマスと右下のマスを保存
+                                    tmpGroupOfVariable.Add(new int[4] { start_x, start_y, (start_x + diff_x - 1) % VAR_NUM, (start_y + diff_y - 1) % VAR_NUM });
+                                    for (int i = start_x; i < size_x + start_x; i++)
+                                    {
+                                        // グループ化されたマスたちはもうグループ化しなくてもいいからフラグを下ろしておく
+                                        for (int j = start_y; j < size_y + start_y; j++)
+                                        {
+                                            tmpShouldGrouped[(i) % VAR_NUM, (j) % VAR_NUM] = false;
+                                        }
+                                    }
+
+                                }
+                            }
+                            // フラグのリセット
+                            isTrue = true;
+                            whetherGrouped = false;
+                        }
+                    }
+                }
+            }
+
+            if (tmpGroupOfVariable.Count < groupOfVariable.Count)
+            {
+                this.groupOfVariable = tmpGroupOfVariable;
+            }
+            */
         }
     }
 }
