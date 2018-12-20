@@ -174,7 +174,7 @@ namespace Simplification_of_the_karnaugh_map
                     }
                 }
             }
-            /*
+
             // (4*4 -> 4*2 -> 4*1 -> 2*4 -> 2*1 -> 1*4 -> 1*2 -> 1*1)の順に探していくよ
             // ただし，2回目だから探索の順序を変えてみる
             for (size_y = VAR_NUM; size_y > 0; size_y /= 2)
@@ -238,7 +238,7 @@ namespace Simplification_of_the_karnaugh_map
             {
                 this.groupOfVariable = tmpGroupOfVariable;
             }
-            */
+
         }
     }
 }
