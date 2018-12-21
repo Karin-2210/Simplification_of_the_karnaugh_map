@@ -70,6 +70,7 @@
             this.Formula.Name = "Formula";
             this.Formula.Size = new System.Drawing.Size(561, 25);
             this.Formula.TabIndex = 1;
+            this.Formula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Formula_KeyPress);
             // 
             // label2
             // 

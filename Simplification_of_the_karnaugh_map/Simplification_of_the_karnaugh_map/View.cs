@@ -114,6 +114,12 @@ namespace Simplification_of_the_karnaugh_map
             Simplified_Draw.Image = canvas;
         }
 
-
+        private void Formula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != 'A' && e.KeyChar != 'B'&&e.KeyChar != 'C' && e.KeyChar != 'D' && e.KeyChar != '/' && e.KeyChar != '\b' && e.KeyChar != '+')
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
