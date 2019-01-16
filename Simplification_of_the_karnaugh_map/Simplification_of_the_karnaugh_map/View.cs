@@ -83,22 +83,26 @@ namespace Simplification_of_the_karnaugh_map
             Pen pen = new Pen(Color.Black, 1);
             for (i = 0; i < _Algorithm.groupOfVariable.Count; i++)
             {
-                if (_Algorithm.groupOfVariable[i][0] != _Algorithm.groupOfVariable[i][2] && _Algorithm.groupOfVariable[i][1] != _Algorithm.groupOfVariable[i][3])
+                if (_Algorithm.groupOfVariable[i][0] != _Algorithm.groupOfVariable[i][2] && _Algorithm.groupOfVariable[i][1] != _Algorithm.groupOfVariable[i][3])//X軸とY軸が両方違う場合
                 {
-                    if (_Algorithm.groupOfVariable[i][2] - _Algorithm.groupOfVariable[i][0] == 1)
+                    if (_Algorithm.groupOfVariable[i][2] - _Algorithm.groupOfVariable[i][0] == 1)//X軸の変化量が1
                     {
                         graphics.DrawEllipse(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, 76, 70);
                     }
-                    else
+                    else//それ以外(たぶん16個囲む場合のみに場合分け出来ているはず)
                     {
                         graphics.DrawEllipse(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, 152, 140);
                     }
                 }
-                else if (_Algorithm.groupOfVariable[i][0] == _Algorithm.groupOfVariable[i][2])
+                else if (_Algorithm.groupOfVariable[i][0] == _Algorithm.groupOfVariable[i][2])//X軸が同じ場合
                 {
-                    if (_Algorithm.groupOfVariable[i][3] - _Algorithm.groupOfVariable[i][1] == 1)
+                    if (_Algorithm.groupOfVariable[i][3] - _Algorithm.groupOfVariable[i][1] == 1)//Y軸の変化量が1
                     {
                         graphics.DrawEllipse(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, 76, 35);
+                    }
+                    else if (_Algorithm.groupOfVariable[i][3] - _Algorithm.groupOfVariable[i][1] < 0)//たぶんここが横向きの半円
+                    {
+                        graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, 38, 35, 90, 180);
                     }
                     else
                     {
@@ -106,11 +110,16 @@ namespace Simplification_of_the_karnaugh_map
                     }
 
                 }
-                else
+                else//それ以外(Y軸が同じ場合のみに絞られてるはず)
                 {
-                    if (_Algorithm.groupOfVariable[i][2] - _Algorithm.groupOfVariable[i][0] == 1)
+                    if (_Algorithm.groupOfVariable[i][2] - _Algorithm.groupOfVariable[i][0] == 1)//X軸の変化量が1
                     {
                         graphics.DrawEllipse(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, 38, 70);
+                    }
+                    else if (_Algorithm.groupOfVariable[i][2] - _Algorithm.groupOfVariable[i][0] < 0)//端と端をまたぐ場合(縦向きの半円)
+                    {
+                        graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, 38, 70, 180, 180);
+                        graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3]].Location.X) + ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3]].Location.Y) + ofset_Y, 38, 70, 0, 180);
                     }
                     else {
                         graphics.DrawEllipse(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, 38, 140);
