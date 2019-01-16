@@ -31,7 +31,7 @@ namespace Simplification_of_the_karnaugh_map
 
         private void Run_Button_Click(object sender, EventArgs e)
         {
-            int i;//ループ用変数
+            int i,p,q;//ループ用変数
             int ofset_X = -10;
             int ofset_Y = -10;
             this.truth_table_outputs = new System.Windows.Forms.TextBox[4, 4];
@@ -71,6 +71,13 @@ namespace Simplification_of_the_karnaugh_map
             truth_table_output_31.Text = Convert.ToString(truth_table_array[3, 1]);
             truth_table_output_32.Text = Convert.ToString(truth_table_array[3, 2]);
             truth_table_output_33.Text = Convert.ToString(truth_table_array[3, 3]);
+            for (i = 0; i <= 3; i++) {
+                for (p = 0; p <= 3; p++)
+                {
+                    truth_table_outputs[i, p].BackColor = Color.White;
+                }
+            }
+            //レガシーな表示形式(丸で囲うタイプ)
             Bitmap canvas = new Bitmap(Simplified_Draw.Width, Simplified_Draw.Height);
             Graphics graphics = Graphics.FromImage(canvas);
             Pen pen = new Pen(Color.Black, 1);
@@ -112,6 +119,47 @@ namespace Simplification_of_the_karnaugh_map
             }
             graphics.Dispose();
             Simplified_Draw.Image = canvas;
+
+            //新表示タイプ(セルの色変化による表示)
+            Random rand = new Random();
+            int color_red;
+            int color_blue;
+            int color_green;
+            for (i = 0; i < _Algorithm.groupOfVariable.Count; i++)
+            {
+                if (!(_Algorithm.groupOfVariable[i][0] == _Algorithm.groupOfVariable[i][2] && _Algorithm.groupOfVariable[i][1] == _Algorithm.groupOfVariable[i][3]))
+                {
+                    color_red = rand.Next(256);
+                    color_blue = rand.Next(256);
+                    color_green = rand.Next(256);
+                    if (_Algorithm.groupOfVariable[i][2] - _Algorithm.groupOfVariable[i][0] < 0)
+                    {
+                        for (q = _Algorithm.groupOfVariable[i][1]; q <= _Algorithm.groupOfVariable[i][3]; q++)
+                        {
+                            this.truth_table_outputs[_Algorithm.groupOfVariable[i][0], q].BackColor = Color.FromArgb(color_red, color_blue, color_green);
+                            this.truth_table_outputs[_Algorithm.groupOfVariable[i][2], q].BackColor = Color.FromArgb(color_red, color_blue, color_green);
+                        }
+                    }
+                    else if (_Algorithm.groupOfVariable[i][3] - _Algorithm.groupOfVariable[i][1] < 0)
+                    {
+                        for (p = _Algorithm.groupOfVariable[i][0]; p <= _Algorithm.groupOfVariable[i][2]; p++)
+                        {
+                            this.truth_table_outputs[p, _Algorithm.groupOfVariable[i][1]].BackColor = Color.FromArgb(color_red, color_blue, color_green);
+                            this.truth_table_outputs[p, _Algorithm.groupOfVariable[i][3]].BackColor = Color.FromArgb(color_red, color_blue, color_green);
+                        }
+                    }
+                    else
+                    {
+                        for (p = _Algorithm.groupOfVariable[i][0]; p <= _Algorithm.groupOfVariable[i][2]; p++)
+                        {
+                            for (q = _Algorithm.groupOfVariable[i][1]; q <= _Algorithm.groupOfVariable[i][3]; q++)
+                            {
+                                this.truth_table_outputs[p, q].BackColor = Color.FromArgb(color_red, color_blue, color_green);
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void Formula_KeyPress(object sender, KeyPressEventArgs e)
