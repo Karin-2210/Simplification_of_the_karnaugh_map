@@ -20,6 +20,7 @@ namespace Simplification_of_the_karnaugh_map
         public static Algorithm _Algorithm;
         internal int[,] truth_table_array = new int[4, 4];
         private System.Windows.Forms.TextBox[,] truth_table_outputs;
+        public System.Windows.Forms.CheckBox[,] DontCare_Tables;
         public View()
         {
             _ViewInstance = this;
@@ -31,7 +32,7 @@ namespace Simplification_of_the_karnaugh_map
 
 		private void Run_Button_Click(object sender, EventArgs e)
 		{
-			int i, p, q;//ループ用変数
+            int i, p, q;//ループ用変数
 			int ofset_X = -10;
 			int ofset_Y = -10;
 			this.truth_table_outputs = new System.Windows.Forms.TextBox[4, 4];
@@ -51,7 +52,24 @@ namespace Simplification_of_the_karnaugh_map
 			this.truth_table_outputs[3, 1] = this.truth_table_output_31;
 			this.truth_table_outputs[3, 2] = this.truth_table_output_32;
 			this.truth_table_outputs[3, 3] = this.truth_table_output_33;
-			Array.Clear(truth_table_array, 1, truth_table_array.Length - 1);//Item[0,0]以外をクリア
+            this.DontCare_Tables = new System.Windows.Forms.CheckBox[4,4];
+            this.DontCare_Tables[0, 0] = this.DontCare_Table00;
+            this.DontCare_Tables[0, 1] = this.DontCare_Table01;
+            this.DontCare_Tables[0, 2] = this.DontCare_Table02;
+            this.DontCare_Tables[0, 3] = this.DontCare_Table03;
+            this.DontCare_Tables[1, 0] = this.DontCare_Table10;
+            this.DontCare_Tables[1, 1] = this.DontCare_Table11;
+            this.DontCare_Tables[1, 2] = this.DontCare_Table12;
+            this.DontCare_Tables[1, 3] = this.DontCare_Table13;
+            this.DontCare_Tables[2, 0] = this.DontCare_Table20;
+            this.DontCare_Tables[2, 1] = this.DontCare_Table21;
+            this.DontCare_Tables[2, 2] = this.DontCare_Table22;
+            this.DontCare_Tables[2, 3] = this.DontCare_Table23;
+            this.DontCare_Tables[3, 0] = this.DontCare_Table30;
+            this.DontCare_Tables[3, 1] = this.DontCare_Table31;
+            this.DontCare_Tables[3, 2] = this.DontCare_Table32;
+            this.DontCare_Tables[3, 3] = this.DontCare_Table33;
+            Array.Clear(truth_table_array, 1, truth_table_array.Length - 1);//Item[0,0]以外をクリア
 			Array.Clear(truth_table_array, 0, truth_table_array.Length);//全ての要素をクリア
 			_TruthtableInstance.Make_Truth_table();
 			_Algorithm.mainAlgorithm();
@@ -178,6 +196,7 @@ namespace Simplification_of_the_karnaugh_map
 			Simplified_Draw.Image = canvas;
 
 			//新表示タイプ(セルの色変化による表示)
+            /*
 			Random rand = new Random();
 			int color_red;
 			int color_blue;
@@ -217,6 +236,7 @@ namespace Simplification_of_the_karnaugh_map
 					}
 				}
 			}
+            */
 		}
 
         private void Formula_KeyPress(object sender, KeyPressEventArgs e)

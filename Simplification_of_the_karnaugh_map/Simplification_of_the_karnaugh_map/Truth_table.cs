@@ -66,8 +66,8 @@ namespace Simplification_of_the_karnaugh_map
                                 {
                                     for (j = 0; j < 4; j++)
                                     {
-                                        _ViewInstance.truth_table_array[j, 0] = 1;
-                                        _ViewInstance.truth_table_array[j, 3] = 1;
+                                        _ViewInstance.truth_table_array[j, 1] = 1;
+                                        _ViewInstance.truth_table_array[j, 2] = 1;
                                     }
                                 }
                                 else//A,B,Cが存在せず，Dがnotの場合
@@ -87,8 +87,8 @@ namespace Simplification_of_the_karnaugh_map
                                     {
                                         for (j = 0; j < 4; j++)
                                         {
-                                            _ViewInstance.truth_table_array[j, 0] = 1;
-                                            _ViewInstance.truth_table_array[j, 1] = 1;
+                                            _ViewInstance.truth_table_array[j, 2] = 1;
+                                            _ViewInstance.truth_table_array[j, 3] = 1;
                                         }
                                     }
                                     else//Cがnotではない場合でDが存在する場合
@@ -843,6 +843,16 @@ namespace Simplification_of_the_karnaugh_map
                     variable += input[i];
                 }
 
+            }
+            for (i = 0; i < 4; i++)
+            {
+                for (j = 0; j < 4; j++)
+                {
+                    if (_ViewInstance.DontCare_Tables[i, j].Checked == true)
+                    {
+                        _ViewInstance.truth_table_array[i, j] = 2;
+                    }
+                }
             }
             for (i = 0; i < 4; i++)
             {
