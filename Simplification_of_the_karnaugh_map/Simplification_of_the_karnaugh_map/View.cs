@@ -167,28 +167,26 @@ namespace Simplification_of_the_karnaugh_map
 
 				if (_Algorithm.groupOfVariable[i][0] > _Algorithm.groupOfVariable[i][2] && _Algorithm.groupOfVariable[i][1] > _Algorithm.groupOfVariable[i][3]) //４つに割れる場合
 				{
-					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X / 2,				(truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y,					(basicWidth - ofset_X / 2) * 2,		(basicHeight - ofset_Y / 2) * 2, 180,	90);
-					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3]].Location.X) + ofset_X - basicWidth,		(truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3]].Location.Y) + ofset_Y - basicHeight,	(basicWidth - ofset_X / 2) * 2,		(basicHeight - ofset_Y / 2) * 2, 0,		90);
-					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][3]].Location.X) + ofset_X - basicWidth,		(truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][3]].Location.Y) + ofset_Y,					(basicWidth - ofset_X / 2) * 2,		(basicHeight - ofset_Y / 2) * 2, 270,	90);
-					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X / 2,				(truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y - basicHeight,	(basicWidth - ofset_X / 2) * 2,		(basicHeight - ofset_Y / 2) * 2, 90,	90);
+					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X / 2,					(truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y,					(basicWidth - ofset_X / 2) * 2,		(basicHeight - ofset_Y / 2) * 2, 180,	90);
+					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3]].Location.X) + ofset_X / 2 - basicWidth,		(truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3]].Location.Y) + ofset_Y - basicHeight,	(basicWidth - ofset_X / 2) * 2,		(basicHeight - ofset_Y / 2) * 2, 0,		90);
+					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][3]].Location.X) + ofset_X / 2 - basicWidth,		(truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][3]].Location.Y) + ofset_Y,					(basicWidth - ofset_X / 2) * 2,		(basicHeight - ofset_Y / 2) * 2, 270,	90);
+					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X / 2,					(truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y - basicHeight,	(basicWidth - ofset_X / 2) * 2,		(basicHeight - ofset_Y / 2) * 2, 90,	90);
 
 				}
 				else if (_Algorithm.groupOfVariable[i][0] > _Algorithm.groupOfVariable[i][2]) //縦に割れる場合
 				{
 					int width = (_Algorithm.groupOfVariable[i][2] + 5 - _Algorithm.groupOfVariable[i][0]) * basicWidth;
 					int height = (_Algorithm.groupOfVariable[i][3] - _Algorithm.groupOfVariable[i][1] + 1) * basicHeight;
-					//					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X / 2, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y,				(basicWidth - ofset_X / 2),	(basicHeight - ofset_Y / 2) * 2,	180,	180);
-					//					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3]].Location.X) + ofset_X / 2, (truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3]].Location.Y) + ofset_Y - basicHeight, (basicWidth - ofset_X / 2),	(basicHeight - ofset_Y / 2) * 2,	0,		180);
-					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X / 2, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y,				height, width, 180, 180);
-					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X / 2, (truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3]].Location.Y) + ofset_Y - basicHeight,	height, width, 0, 180);
+					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X / 2, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y / 2,					height, width, 180, 180);
+					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X / 2, (truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3]].Location.Y) + ofset_Y / 2 - basicHeight,		height, width, 0,	180);
 				}
 				else if (_Algorithm.groupOfVariable[i][1] > _Algorithm.groupOfVariable[i][3]) //横に割れる場合
 				{
 					int width = (_Algorithm.groupOfVariable[i][2] - _Algorithm.groupOfVariable[i][0] + 1) * basicWidth;
-					int height = (_Algorithm.groupOfVariable[i][3] + 5 - _Algorithm.groupOfVariable[i][1] + 1) * basicHeight;
+					int height = (_Algorithm.groupOfVariable[i][3] + 5 - _Algorithm.groupOfVariable[i][1]) * basicHeight;
 
-					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X / 2,			(truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, height/2, width,	90,		180);
-					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3]].Location.X) - basicWidth/2,			(truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y, height/2, width,	270,	180);
+					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X / 2,				(truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y / 2,	height, width,	90,		180);
+					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3]].Location.X) + ofset_X / 2 - basicWidth,	(truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y / 2,	height, width,	270,	180);
 				}
 				else//それ以外
 				{
