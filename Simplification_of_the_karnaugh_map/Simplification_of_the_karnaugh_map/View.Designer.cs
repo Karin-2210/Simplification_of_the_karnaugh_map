@@ -706,7 +706,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox Simplification_Formula;
+        public System.Windows.Forms.TextBox Simplification_Formula;
         private System.Windows.Forms.Button Run_Button;
         private System.Windows.Forms.TextBox truth_table_output_00;
         private System.Windows.Forms.TextBox truth_table_output_01;

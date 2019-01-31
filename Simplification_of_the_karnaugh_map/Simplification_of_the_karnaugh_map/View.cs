@@ -18,6 +18,7 @@ namespace Simplification_of_the_karnaugh_map
         public static View ViewInstance { get => _ViewInstance; set => _ViewInstance = value; }
         public static Truth_table _TruthtableInstance;
         public static Algorithm _Algorithm;
+        public static Make_Simplification_Formula _Make_Simplification_Formula;
         internal int[,] truth_table_array = new int[4, 4];
         private System.Windows.Forms.TextBox[,] truth_table_outputs;
         public System.Windows.Forms.CheckBox[,] DontCare_Tables;
@@ -26,7 +27,7 @@ namespace Simplification_of_the_karnaugh_map
             _ViewInstance = this;
             _TruthtableInstance = new Truth_table();
             _Algorithm = new Algorithm();
-            
+            _Make_Simplification_Formula = new Make_Simplification_Formula();
             InitializeComponent();
         }
 
@@ -71,6 +72,7 @@ namespace Simplification_of_the_karnaugh_map
             this.DontCare_Tables[3, 3] = this.DontCare_Table33;
             Array.Clear(truth_table_array, 1, truth_table_array.Length - 1);//Item[0,0]以外をクリア
 			Array.Clear(truth_table_array, 0, truth_table_array.Length);//全ての要素をクリア
+            Simplification_Formula.ResetText();
 			_TruthtableInstance.Make_Truth_table();
 			_Algorithm.mainAlgorithm();
 			truth_table_output_00.Text = Convert.ToString(truth_table_array[0, 0]);
@@ -158,7 +160,9 @@ namespace Simplification_of_the_karnaugh_map
 				int blue = random.Next(256);
 				int basicWidth = truth_table_outputs[1, 1].Location.X - truth_table_outputs[1, 0].Location.X;
 				int basicHeight = truth_table_outputs[1, 1].Location.Y - truth_table_outputs[0, 1].Location.Y;
-				ofset_X = -9;
+                int make_Simplification_Formula_option=0;
+
+                ofset_X = -9;
 				ofset_Y = -9;
 
 				Color penColor = new Color();
@@ -171,7 +175,8 @@ namespace Simplification_of_the_karnaugh_map
 					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3]].Location.X) + ofset_X / 2 - basicWidth,		(truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3]].Location.Y) + ofset_Y - basicHeight,	(basicWidth - ofset_X / 2) * 2,		(basicHeight - ofset_Y / 2) * 2, 0,		90);
 					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][3]].Location.X) + ofset_X / 2 - basicWidth,		(truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][3]].Location.Y) + ofset_Y,					(basicWidth - ofset_X / 2) * 2,		(basicHeight - ofset_Y / 2) * 2, 270,	90);
 					graphics.DrawArc(pen, (truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][1]].Location.X) + ofset_X / 2,					(truth_table_outputs[_Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][1]].Location.Y) + ofset_Y - basicHeight,	(basicWidth - ofset_X / 2) * 2,		(basicHeight - ofset_Y / 2) * 2, 90,	90);
-
+                    //数式表示用追記(2019/01/31)
+                    make_Simplification_Formula_option = 1;
 				}
 				else if (_Algorithm.groupOfVariable[i][0] > _Algorithm.groupOfVariable[i][2]) //縦に割れる場合
 				{
@@ -192,7 +197,9 @@ namespace Simplification_of_the_karnaugh_map
 				{
 					graphics.DrawEllipse(pen, truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.X + ofset_X / 2, truth_table_outputs[_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1]].Location.Y + ofset_Y / 2, (_Algorithm.groupOfVariable[i][3] - _Algorithm.groupOfVariable[i][1] + 1) * basicWidth, (_Algorithm.groupOfVariable[i][2] - _Algorithm.groupOfVariable[i][0] + 1) * basicHeight);
 				}
-			}
+                _Make_Simplification_Formula.Make_formula(_Algorithm.groupOfVariable[i][0], _Algorithm.groupOfVariable[i][1], _Algorithm.groupOfVariable[i][2], _Algorithm.groupOfVariable[i][3], make_Simplification_Formula_option);
+            }
+            Simplification_Formula.Text=Simplification_Formula.Text.Remove(Simplification_Formula.Text.LastIndexOf('+'),1);
 			//竹内改良ver. end
 
 			graphics.Dispose();
