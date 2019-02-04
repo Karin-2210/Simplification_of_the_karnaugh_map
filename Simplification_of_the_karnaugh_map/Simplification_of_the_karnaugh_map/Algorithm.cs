@@ -121,19 +121,20 @@ namespace Simplification_of_the_karnaugh_map
             {
                 for (size_y = VAR_NUM; size_y > 0; size_y/=2)
                 {
-                    // 左から右へ
-                    for (start_x = 0; start_x < VAR_NUM; start_x++)
-                    {
-                        // 上から下へ
-                        for (start_y = 0; start_y < VAR_NUM; start_y++)
-                        {
-                            // サイズの分だけ探索
-                            for (diff_x = 0; diff_x < size_x; diff_x++)
-                            {
-                                for (diff_y = 0; diff_y < size_y; diff_y++)
-                                {
-                                    // もし一つでも0ならグループ化できないからフラグを下ろしておく
-                                    if (this.truth_table_array[(start_x + diff_x)%VAR_NUM, (start_y + diff_y)%VAR_NUM] == 0)
+					// 左から右へ
+					for (start_x = 0; start_x < VAR_NUM; start_x++)
+					{
+						// 上から下へ
+						for (start_y = 0; start_y < VAR_NUM; start_y++)
+						{
+							// サイズの分だけ探索
+							for (diff_x = 0; diff_x < size_x; diff_x++)
+							{
+								for (diff_y = 0; diff_y < size_y; diff_y++)
+								{
+							
+									// もし一つでも0ならグループ化できないからフラグを下ろしておく
+									if (this.truth_table_array[(start_x + diff_x)%VAR_NUM, (start_y + diff_y)%VAR_NUM] == 0)
                                     {
                                         isTrue = false;
                                     }
